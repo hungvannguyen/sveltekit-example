@@ -1,7 +1,59 @@
 @reference "tailwindcss";
 
 body {
-    @apply bg-[#020202] flex flex-col min-h-svh relative z-10;
+    @apply bg-[#0b0809] flex flex-col min-h-svh relative z-10;
+}
+
+p,
+span {
+    @apply text-[#cfcfcf];
+}
+
+h1,
+h2,
+h3,
+h4 {
+    @apply text-white font-bold;
+}
+
+.container {
+    @apply w-full mx-auto;
+}
+
+@media (min-width: 40rem) {
+    .container {
+        @apply max-w-[40rem]
+    }
+}
+
+@media (min-width: 48rem) {
+    .container {
+        @apply max-w-[48rem]
+    }
+}
+
+@media (min-width: 64rem) {
+    .container {
+        @apply max-w-[64rem]
+    }
+}
+
+@media (min-width: 80rem) {
+    .container {
+        @apply max-w-[80rem]
+    }
+}
+
+@media (min-width: 96rem) {
+    .container {
+        @apply max-w-[96rem]
+    }
+}
+
+@media (min-width: 1100px) {
+    .container {
+        @apply max-w-[1100px]
+    }
 }
 
 .icon {
