@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+body {
+    @apply bg-[#020202] flex flex-col min-h-svh relative z-10;
+}
