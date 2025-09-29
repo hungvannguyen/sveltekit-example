@@ -11,7 +11,7 @@
 		<nav class="hidden flex-1 items-center justify-center gap-2 md:flex">
 			<div class="flex gap-2">
 				<a
-					href="/"
+					href="/courses"
 					class="ring-offset-background focus-visible:ring-ring data-[active=true]:text-accent relative inline-flex cursor-pointer items-center justify-center gap-2 rounded-4xl px-3 py-1 font-medium tracking-normal whitespace-nowrap text-gray-500 transition-colors duration-300 hover:text-gray-300 focus:text-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 dark:hover:text-white [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
 				>
 					Courses
