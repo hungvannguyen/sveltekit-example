@@ -1,9 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
+	import DropdownSelect from '$lib/components/DropdownSelect.svelte';
 
-	let isDropdownOpen = false;
-	let selectedCategory = 'All courses';
-	let dropdownRef;
+	let selectedCategoryValue = 'all';
 
 	const categories = [
 		{ value: 'all', label: 'All courses' },
@@ -12,27 +10,14 @@
 		{ value: 'se', label: 'Software Engineering Essentials' }
 	];
 
-	function toggleDropdown() {
-		isDropdownOpen = !isDropdownOpen;
+	/**
+	 * Handle category selection change
+	 * @param {CustomEvent} event
+	 */
+	function handleCategoryChange(event) {
+		selectedCategoryValue = event.detail.value;
+		console.log('Selected category:', event.detail);
 	}
-
-	function selectCategory(category) {
-		selectedCategory = category.label;
-		isDropdownOpen = false;
-	}
-
-	function handleClickOutside(event) {
-		if (dropdownRef && !dropdownRef.contains(event.target)) {
-			isDropdownOpen = false;
-		}
-	}
-
-	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
-	});
 </script>
 
 <div class="py-8">
@@ -55,77 +40,12 @@
 					type="text"
 				/>
 			</div>
-			<div class="relative w-auto" bind:this={dropdownRef}>
-				<button
-					class="flex w-full items-center justify-between gap-5 rounded-md border border-[#ffffff1a] px-3 py-2 text-[#fff] transition-colors hover:border-white"
-					aria-haspopup="listbox"
-					aria-expanded={isDropdownOpen}
-					data-state={isDropdownOpen ? 'open' : 'closed'}
-					type="button"
-					on:click={toggleDropdown}
-				>
-					{selectedCategory}
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="lucide-icon lucide lucide-chevron-down size-4 opacity-50 transition-transform duration-200 {isDropdownOpen
-							? 'rotate-180'
-							: ''}"><path d="m6 9 6 6 6-6"></path></svg
-					>
-				</button>
-
-				{#if isDropdownOpen}
-					<div
-						class="animate-in fade-in-0 zoom-in-95 absolute top-full right-0 left-0 z-50 mt-0 w-[290px] max-w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200"
-						role="listbox"
-					>
-						{#each categories as category}
-							<button
-								class="flex w-full items-center justify-between px-3 py-2 text-left text-[#fff] transition-colors duration-150 hover:bg-violet-500 {selectedCategory ===
-								category.label
-									? 'bg-violet-500/20'
-									: ''}"
-								role="option"
-								aria-selected={selectedCategory === category.label}
-								on:click={() => selectCategory(category)}
-							>
-								{category.label}
-								{#if selectedCategory === category.label}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										class="size-4 text-violet-500"
-									>
-										<path d="M20 6 9 17l-5-5"></path>
-									</svg>
-								{/if}
-							</button>
-						{/each}
-					</div>
-				{/if}
-
-				<input
-					name="category"
-					value={categories.find((cat) => cat.label === selectedCategory)?.value || 'all'}
-					aria-hidden="true"
-					tabindex="-1"
-					style="position: absolute; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; transform: translateX(-100%);"
-				/>
-			</div>
+			<DropdownSelect
+				options={categories}
+				selectedValue={selectedCategoryValue}
+				name="category"
+				on:change={handleCategoryChange}
+			/>
 		</div>
 		<div class="flex flex-col items-center">
 			<div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
