@@ -49,7 +49,7 @@
 		<div class="mb-5 flex flex-wrap md:flex-nowrap">
 			<div class="mb-5 w-full md:mr-5 lg:w-[33rem]">
 				<input
-					class="placeholder:text-muted-[#7f7f7f] focus-visible:ring-ring flex h-10 w-full rounded-md border border-[#ffffff1a] bg-[#0b0809] px-3 py-5 ring-offset-[#0b0809] file:border-0 file:bg-transparent file:text-sm file:font-medium focus:border-white focus-visible:ring-0 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+					class="placeholder:text-muted-[#7f7f7f] focus-visible:ring-ring flex h-10 w-full rounded-md border border-[#ffffff1a] bg-[#0b0809] px-3 py-5 text-[#7f7f7f] ring-offset-[#0b0809] file:border-0 file:bg-transparent file:text-sm file:font-medium focus:border-[#ffffff1a] focus-visible:ring-0 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
 					placeholder="Search"
 					name="search"
 					type="text"
@@ -57,7 +57,7 @@
 			</div>
 			<div class="relative w-auto" bind:this={dropdownRef}>
 				<button
-					class="flex w-full items-center justify-between gap-5 rounded-md border border-[#ffffff1a] px-3 py-2 text-[#fff] transition-colors hover:border-white"
+					class="flex w-full items-center justify-between gap-5 rounded-md border border-[#ffffff1a] px-3 py-2 !font-extralight text-[#fff] transition-colors hover:border-white"
 					aria-haspopup="listbox"
 					aria-expanded={isDropdownOpen}
 					data-state={isDropdownOpen ? 'open' : 'closed'}
@@ -83,7 +83,7 @@
 
 				{#if isDropdownOpen}
 					<div
-						class="animate-in fade-in-0 zoom-in-95 absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200"
+						class="animate-in fade-in-0 zoom-in-95 absolute top-full right-0 left-0 z-50 mt-1 w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200"
 						role="listbox"
 					>
 						{#each categories as category}
