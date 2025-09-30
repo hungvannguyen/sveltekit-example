@@ -4,6 +4,7 @@
 	let isDropdownOpen = false;
 	let selectedCategory = 'All courses';
 	let dropdownRef;
+	let dropdownPosition = { top: 0, left: 0, width: 0 };
 
 	const categories = [
 		{ value: 'all', label: 'All courses' },
@@ -13,6 +14,13 @@
 	];
 
 	function toggleDropdown() {
+		if (!isDropdownOpen && dropdownRef) {
+			const rect = dropdownRef.getBoundingClientRect();
+			dropdownPosition = {
+				top: rect.bottom + window.scrollY + 10,
+				width: rect.width
+			};
+		}
 		isDropdownOpen = !isDropdownOpen;
 	}
 
@@ -23,14 +31,33 @@
 
 	function handleClickOutside(event) {
 		if (dropdownRef && !dropdownRef.contains(event.target)) {
-			isDropdownOpen = false;
+			const dropdownMenu = document.querySelector('[data-dropdown-menu]');
+			if (!dropdownMenu || !dropdownMenu.contains(event.target)) {
+				isDropdownOpen = false;
+			}
+		}
+	}
+
+	function handleResize() {
+		if (isDropdownOpen && dropdownRef) {
+			const rect = dropdownRef.getBoundingClientRect();
+			dropdownPosition = {
+				top: rect.bottom + window.scrollY + 10,
+				left: rect.left + window.scrollX,
+				width: rect.width
+			};
 		}
 	}
 
 	onMount(() => {
 		document.addEventListener('click', handleClickOutside);
+		window.addEventListener('resize', handleResize);
+		window.addEventListener('scroll', handleResize);
+
 		return () => {
 			document.removeEventListener('click', handleClickOutside);
+			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('scroll', handleResize);
 		};
 	});
 </script>
@@ -55,13 +82,14 @@
 					type="text"
 				/>
 			</div>
-			<div class="relative w-auto" bind:this={dropdownRef}>
+			<div class="relative w-auto">
 				<button
 					class="flex w-full items-center justify-between gap-5 rounded-md border border-[#ffffff1a] px-3 py-2 !font-extralight text-[#fff] transition-colors hover:border-white"
 					aria-haspopup="listbox"
 					aria-expanded={isDropdownOpen}
 					data-state={isDropdownOpen ? 'open' : 'closed'}
 					type="button"
+					bind:this={dropdownRef}
 					on:click={toggleDropdown}
 				>
 					{selectedCategory}
@@ -80,43 +108,6 @@
 							: ''}"><path d="m6 9 6 6 6-6"></path></svg
 					>
 				</button>
-
-				{#if isDropdownOpen}
-					<div
-						class="animate-in fade-in-0 zoom-in-95 absolute top-full right-0 left-0 z-50 mt-1 w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200"
-						role="listbox"
-					>
-						{#each categories as category}
-							<button
-								class="flex w-full items-center justify-between px-3 py-2 text-left text-[#fff] transition-colors duration-150 hover:bg-violet-500 {selectedCategory ===
-								category.label
-									? 'bg-violet-500/20'
-									: ''}"
-								role="option"
-								aria-selected={selectedCategory === category.label}
-								on:click={() => selectCategory(category)}
-							>
-								{category.label}
-								{#if selectedCategory === category.label}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										class="size-4 text-violet-500"
-									>
-										<path d="M20 6 9 17l-5-5"></path>
-									</svg>
-								{/if}
-							</button>
-						{/each}
-					</div>
-				{/if}
 
 				<input
 					name="category"
@@ -352,3 +343,43 @@
 		</div>
 	</div>
 </div>
+
+<!-- Dropdown Menu  -->
+{#if isDropdownOpen}
+	<div
+		class="animate-in fade-in-0 zoom-in-95 fixed z-50 w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200"
+		role="listbox"
+		data-dropdown-menu
+		style="top: {dropdownPosition.top}px; left: {dropdownPosition.left}px; min-width: {dropdownPosition.width}px;"
+	>
+		{#each categories as category}
+			<button
+				class="flex w-full items-center justify-between px-3 py-2 text-left text-[#fff] transition-colors duration-150 hover:bg-violet-500 {selectedCategory ===
+				category.label
+					? 'bg-violet-500/20'
+					: ''}"
+				role="option"
+				aria-selected={selectedCategory === category.label}
+				on:click={() => selectCategory(category)}
+			>
+				{category.label}
+				{#if selectedCategory === category.label}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="size-4 text-violet-500"
+					>
+						<path d="M20 6 9 17l-5-5"></path>
+					</svg>
+				{/if}
+			</button>
+		{/each}
+	</div>
+{/if}
