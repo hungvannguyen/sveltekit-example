@@ -1,5 +1,6 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
+	import { browser } from '$app/environment';
 
 	export let options = [];
 	export let selectedValue = '';
@@ -14,7 +15,7 @@
 	let showAbove = false;
 
 	function calculatePosition() {
-		if (dropdownButton) {
+		if (browser && dropdownButton) {
 			const rect = dropdownButton.getBoundingClientRect();
 			const spaceBelow = window.innerHeight - rect.bottom;
 			const spaceAbove = rect.top;
@@ -38,13 +39,17 @@
 	}
 
 	onMount(() => {
-		window.addEventListener('resize', handleResize);
-		window.addEventListener('scroll', handleResize);
+		if (browser) {
+			window.addEventListener('resize', handleResize);
+			window.addEventListener('scroll', handleResize);
+		}
 	});
 
 	onDestroy(() => {
-		window.removeEventListener('resize', handleResize);
-		window.removeEventListener('scroll', handleResize);
+		if (browser) {
+			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('scroll', handleResize);
+		}
 	});
 
 	function select(option) {
