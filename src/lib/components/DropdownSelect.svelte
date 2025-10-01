@@ -1,83 +1,73 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
-	/**
-	 * @typedef {Object} DropdownOption
-	 * @property {string} value
-	 * @property {string} label
-	 */
-
-	/** @type {DropdownOption[]} */
 	export let options = [];
 	export let selectedValue = '';
-	export let placeholder = 'Select option';
 	export let name = 'select';
-	export let className = '';
 
-	let isDropdownOpen = false;
-	/** @type {HTMLElement | undefined} */
-	let dropdownRef;
-	/** @type {DropdownOption} */
-	let selectedOption = options.find((opt) => opt.value === selectedValue) ||
-		options[0] || { label: placeholder, value: '' };
+	let isOpen = false;
+	let selectedLabel =
+		options.find((opt) => opt.value === selectedValue)?.label ||
+		options[0]?.label ||
+		'Select option';
+	let dropdownButton;
+	let showAbove = false;
 
-	function toggleDropdown() {
-		isDropdownOpen = !isDropdownOpen;
-	}
+	function calculatePosition() {
+		if (dropdownButton) {
+			const rect = dropdownButton.getBoundingClientRect();
+			const spaceBelow = window.innerHeight - rect.bottom;
+			const spaceAbove = rect.top;
+			const dropdownHeight = Math.min(options.length * 48 + 16, 280);
 
-	/** @param {DropdownOption} option */
-	function selectOption(option) {
-		selectedOption = option;
-		selectedValue = option.value;
-		isDropdownOpen = false;
-
-		// Dispatch custom event for parent component
-		const event = new CustomEvent('change', {
-			detail: { value: option.value, label: option.label }
-		});
-		if (dropdownRef) {
-			dropdownRef.dispatchEvent(event);
+			showAbove = spaceBelow < dropdownHeight && spaceAbove >= dropdownHeight;
 		}
 	}
 
-	/** @param {Event} event */
-	function handleClickOutside(event) {
-		if (
-			dropdownRef &&
-			event.target &&
-			dropdownRef.contains(/** @type {Node} */ (event.target)) === false
-		) {
-			isDropdownOpen = false;
+	function toggle() {
+		if (!isOpen) {
+			calculatePosition();
+		}
+		isOpen = !isOpen;
+	}
+
+	function handleResize() {
+		if (isOpen) {
+			calculatePosition();
 		}
 	}
 
 	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
+		window.addEventListener('resize', handleResize);
+		window.addEventListener('scroll', handleResize);
 	});
 
-	// Update selected option when selectedValue prop changes
+	onDestroy(() => {
+		window.removeEventListener('resize', handleResize);
+		window.removeEventListener('scroll', handleResize);
+	});
+
+	function select(option) {
+		selectedValue = option.value;
+		selectedLabel = option.label;
+		isOpen = false;
+	}
+
 	$: if (selectedValue) {
-		const newSelected = options.find((opt) => opt.value === selectedValue);
-		if (newSelected) {
-			selectedOption = newSelected;
-		}
+		const found = options.find((opt) => opt.value === selectedValue);
+		if (found) selectedLabel = found.label;
 	}
 </script>
 
-<div class="relative w-auto {className}" bind:this={dropdownRef}>
+<div class="relative w-auto">
 	<!-- Dropdown Button -->
 	<button
-		class="flex w-full items-center justify-between gap-5 rounded-md border border-[#ffffff1a] px-3 py-2 text-[#fff] transition-colors hover:border-white"
-		aria-haspopup="listbox"
-		aria-expanded={isDropdownOpen}
-		data-state={isDropdownOpen ? 'open' : 'closed'}
+		bind:this={dropdownButton}
+		class="flex w-full items-center justify-between gap-5 rounded-md border border-[#ffffff1a] px-3 py-2 text-[#fff] transition-colors"
 		type="button"
-		on:click={toggleDropdown}
+		on:click={toggle}
 	>
-		{selectedOption.label}
+		{selectedLabel}
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
@@ -88,7 +78,7 @@
 			stroke-width="2"
 			stroke-linecap="round"
 			stroke-linejoin="round"
-			class="lucide-icon lucide lucide-chevron-down size-4 opacity-50 transition-transform duration-200 {isDropdownOpen
+			class="lucide-icon lucide lucide-chevron-down size-4 opacity-50 transition-transform duration-200 {isOpen
 				? 'rotate-180'
 				: ''}"
 		>
@@ -97,23 +87,19 @@
 	</button>
 
 	<!-- Dropdown Menu -->
-	{#if isDropdownOpen}
+	{#if isOpen}
 		<div
-			class="animate-in fade-in-0 zoom-in-95 absolute top-full right-0 left-0 z-50 mt-1 w-[290px] max-w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200"
-			role="listbox"
+			class="animate-in fade-in-0 zoom-in-95 absolute right-0 left-0 z-50 w-[290px] max-w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200 {showAbove
+				? 'bottom-full mb-1'
+				: 'top-full mt-[-10px]'}"
 		>
 			{#each options as option}
 				<button
-					class="flex w-full items-center justify-between px-3 py-2 text-left text-[#fff] transition-colors duration-150 hover:bg-violet-500 {selectedOption.value ===
-					option.value
-						? 'bg-violet-500/20'
-						: ''}"
-					role="option"
-					aria-selected={selectedOption.value === option.value}
-					on:click={() => selectOption(option)}
+					class="flex w-full items-center justify-between px-3 py-2 text-left text-[#fff] transition-colors duration-150 hover:bg-violet-500"
+					on:click={() => select(option)}
 				>
 					{option.label}
-					{#if selectedOption.value === option.value}
+					{#if selectedValue === option.value}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
