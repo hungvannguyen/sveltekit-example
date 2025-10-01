@@ -1,5 +1,8 @@
 <script>
 	import MoneyBack from '$lib/assets/money-back.svg';
+	import SectionHeaderWithSubtitle from '$lib/components/SectionHeaderWithSubtitle.svelte';
+	import PricingCard from '$lib/components/PricingCard.svelte';
+	import FAQItem from '$lib/components/FAQItem.svelte';
 </script>
 
 <main class="flex flex-grow flex-col py-4 pt-20">
@@ -24,102 +27,41 @@
 	<div class="container">
 		<div class="flex flex-col items-center gap-10">
 			<div class="flex w-full flex-wrap justify-around gap-3">
-				<div class="relative w-full md:max-w-[450px]" role="enrollment-card">
-					<div class="relative rounded-3xl bg-gradient-to-b from-slate-700 to-transparent p-[1px]">
-						<div
-							class="via-slate-850 overflow-hidden rounded-3xl bg-gradient-to-b from-slate-800 to-slate-900 p-6 shadow-lg md:p-8"
-						>
-							<h4 class="mb-2 w-40 text-2xl font-bold text-white md:w-auto">Get VIP 1</h4>
-							<p class="text-gray-350 font-medium">All current and future courses — one payment.</p>
-							<div class="my-6 h-30">
-								<div data-testid="price-tag">
-									<span class="text-5xl font-bold dark:text-white">$100.00</span>
-								</div>
-								<div class="text-gray-350 my-2">
-									<span>🇻🇳 You'll be charged $100.00 + tax</span>
-								</div>
-							</div>
-							<div class="flex flex-col items-center px-6 md:px-8 lg:px-12">
-								<div class="absolute top-8 right-5 flex flex-col gap-1 md:top-9">
-									<div
-										class="inline rounded-md bg-pink-500 px-3 py-1 text-sm font-medium text-white md:font-bold"
-									>
-										best
-									</div>
-								</div>
-								<!---->
-								<a
-									class="group text-md hover:bg-violet-650 inline-block w-full rounded-full bg-violet-500 px-6 py-3 text-center font-medium text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-									role="button"
-									href="https://sso.teachable.com/secure/146684/checkout/6297839/all-access-1?coupon_code=EXPIRED"
-									>Unlock All Courses</a
-								>
-								<p class="text-gray-350 my-2 text-sm font-semibold">No recurring fees — ever.</p>
-							</div>
-							<div class="mt-10 w-full">
-								<div class="mb-4 font-medium text-[#7f7f7f]">What's included:</div>
-								<div
-									class="prose prose-sm [&amp;_ul]:list-none [&amp;_li]:flex [&amp;_li]:items-start [&amp;_li]:gap-2 [&amp;_li]:mb-2 [&amp;_li]:before:content-['✓'] [&amp;_li]:before:text-green-400 [&amp;_li]:before:font-bold [&amp;_li]:before:flex-shrink-0 max-w-none text-white"
-								>
-									<ul>
-										<li>10+ premium courses worth $1,850+</li>
-										<li>330 hours of HD video</li>
-										<li>Downloadable content</li>
-										<li>Early access to new courses</li>
-										<li>Help shape future course topics<br /><br /></li>
-									</ul>
-									<!---->
-								</div>
-								<!---->
-							</div>
-						</div>
-					</div>
-				</div>
+				<PricingCard
+					title="Get VIP 1"
+					description="All current and future courses — one payment."
+					price="$100.00"
+					taxNote="🇻🇳 You'll be charged $100.00 + tax"
+					buttonText="Unlock All Courses"
+					buttonHref="https://sso.teachable.com/secure/146684/checkout/6297839/all-access-1?coupon_code=EXPIRED"
+					disclaimer="No recurring fees — ever."
+					showBadge={true}
+					badgeText="best"
+					features={[
+						{ text: '10+ premium courses worth $1,850+' },
+						{ text: '330 hours of HD video' },
+						{ text: 'Downloadable content' },
+						{ text: 'Early access to new courses' },
+						{ text: 'Help shape future course topics' }
+					]}
+				/>
 
-				<div class="relative w-full md:max-w-[450px]" role="enrollment-card">
-					<div class="relative rounded-3xl bg-gradient-to-b from-slate-700 to-transparent p-[1px]">
-						<div
-							class="via-slate-850 overflow-hidden rounded-3xl bg-gradient-to-b from-slate-800 to-slate-900 p-6 shadow-lg md:p-8"
-						>
-							<h4 class="mb-2 w-40 text-2xl font-bold text-white md:w-auto">Get VIP 2</h4>
-							<p class="text-gray-350 font-medium">All current and future courses — one payment.</p>
-							<div class="my-6 h-30">
-								<div data-testid="price-tag">
-									<span class="text-5xl font-bold dark:text-white">$300.00</span>
-								</div>
-								<div class="text-gray-350 my-2">
-									<span>🇻🇳 You'll be charged $300.00 + tax</span>
-								</div>
-							</div>
-							<div class="flex flex-col items-center px-6 md:px-8 lg:px-12">
-								<!---->
-								<a
-									class="group text-md hover:bg-violet-650 inline-block w-full rounded-full bg-violet-500 px-6 py-3 text-center font-medium text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-									role="button"
-									href="https://sso.teachable.com/secure/146684/checkout/6297839/all-access-1?coupon_code=EXPIRED"
-									>Unlock All Courses</a
-								>
-								<p class="text-gray-350 my-2 text-sm font-semibold">No recurring fees — ever.</p>
-							</div>
-							<div class="mt-10 w-full">
-								<div class="mb-4 font-medium text-[#7f7f7f]">What's included:</div>
-								<div
-									class="prose prose-sm [&amp;_ul]:list-none [&amp;_li]:flex [&amp;_li]:items-start [&amp;_li]:gap-2 [&amp;_li]:mb-2 [&amp;_li]:before:content-['✓'] [&amp;_li]:before:text-green-400 [&amp;_li]:before:font-bold [&amp;_li]:before:flex-shrink-0 max-w-none text-white"
-								>
-									<ul>
-										<li>All VIP 1 included</li>
-										<li>50+ more premium courses worth $4,850+</li>
-										<li>330 hours of HD video</li>
-										<li>Lifetime access</li>
-										<li>More downloadable content<br /><br /></li>
-									</ul>
-									<!---->
-								</div>
-								<!---->
-							</div>
-						</div>
-					</div>
-				</div>
+				<PricingCard
+					title="Get VIP 2"
+					description="All current and future courses — one payment."
+					price="$300.00"
+					taxNote="🇻🇳 You'll be charged $300.00 + tax"
+					buttonText="Unlock All Courses"
+					buttonHref="https://sso.teachable.com/secure/146684/checkout/6297839/all-access-1?coupon_code=EXPIRED"
+					disclaimer="No recurring fees — ever."
+					features={[
+						{ text: 'All VIP 1 included' },
+						{ text: '50+ more premium courses worth $4,850+' },
+						{ text: '330 hours of HD video' },
+						{ text: 'Lifetime access' },
+						{ text: 'More downloadable content' }
+					]}
+				/>
 			</div>
 
 			<div class="flex flex-col items-center text-center">
@@ -412,81 +354,44 @@
 
 			<div class="flex flex-col items-center text-center">
 				<section class="flex flex-col lg:my-5 lg:mb-10">
-					<header class="my-12 mb-6 text-center">
-						<p
-							class="text-md from-violet-70 to-pink-650 my-4 inline-block bg-gradient-to-r bg-clip-text font-semibold tracking-wide text-transparent"
-						>
-							Need More Details?
-						</p>
-						<h2 class="text-4xl leading-[1.2]">Frequently-Asked Questions</h2>
-					</header>
+					<SectionHeaderWithSubtitle
+						subtitle="Need More Details?"
+						title="Frequently-Asked Questions"
+					/>
 					<ul class="mt-5 mb-8 max-w-prose text-left">
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								What’s included with Lifetime Access?
-							</p>
-							<p>
-								With Lifetime Access, you get immediate access to all current courses and all future
-								releases—forever. Pay once, and you’ll never need to pay again.
-							</p>
-						</li>
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								What’s the difference between buying a single course and getting Lifetime Access?
-							</p>
-							<p>
-								Buying a single course gives you lifetime access to just that course. Lifetime
+						<FAQItem
+							question="What’s included with Lifetime Access?"
+							answer="With Lifetime Access, you get immediate access to all current courses and all future releases—forever. Pay once, and you'll never need to pay again."
+						/>
+						<FAQItem
+							question="What’s the difference between buying a single course and getting Lifetime Access?"
+							answer="Buying a single course gives you lifetime access to just that course. Lifetime
 								Access unlocks everything I’ve ever created—and everything I’ll release in the
-								future—with a single payment.
-							</p>
-						</li>
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								Is there a money-back guarantee?
-							</p>
-							<p>
-								Yes, we offer a 30-day money-back guarantee. If you’re not satisfied, just contact
-								us within 30 days of purchase and you’ll receive a full refund—no questions asked.
-							</p>
-						</li>
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								Can I download the courses?
-							</p>
-							<p>
-								Yes. You can download all videos and resources to learn offline or revisit them
-								anytime. Everything is yours to keep.
-							</p>
-						</li>
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								Do I receive certificates for completed courses?
-							</p>
-							<p>
-								Yes, you’ll receive a certificate of completion for each course you finish, perfect
-								for showcasing your new skills.
-							</p>
-						</li>
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								How often are new courses added?
-							</p>
-							<p>
-								I typically release 3 to 4 high-quality courses per year, focused on the most
-								in-demand technologies and skills. When you get Lifetime Access, you’ll
-								automatically receive every future course at no extra cost—no subscriptions, no
-								hidden fees.
-							</p>
-						</li>
-						<li class="mb-10">
-							<p class="mb-2 font-medium !text-white md:font-semibold">
-								Is this suitable for beginners?
-							</p>
-							<p>
-								Yes! Whether you’re just starting out or looking to deepen your knowledge, the
-								courses are designed to guide you every step of the way.
-							</p>
-						</li>
+								future—with a single payment."
+						/>
+						<FAQItem
+							question="Is there a money-back guarantee?"
+							answer="Yes, we offer a 30-day money-back guarantee. If you’re not satisfied, just contact
+								us within 30 days of purchase and you’ll receive a full refund—no questions asked."
+						/>
+						<FAQItem
+							question="Can I download the courses?"
+							answer="Yes. You can download all videos and resources to learn offline or revisit them
+								anytime. Everything is yours to keep."
+						/>
+						<FAQItem
+							question="Do I receive certificates for completed courses??"
+							answer="Yes, you’ll receive a certificate of completion for each course you finish, perfect
+								for showcasing your new skills."
+						/>
+						<FAQItem
+							question="How often are new courses added?"
+							answer="I typically release 3 to 4 high-quality courses per year, focused on the most in-demand technologies and skills. When you get Lifetime Access, you’ll automatically receive every future course at no extra cost—no subscriptions, no hidden fees."
+						/>
+						<FAQItem
+							question="Is this suitable for beginners?"
+							answer="Yes! Whether you’re just starting out or looking to deepen your knowledge, the courses are designed to guide you every step of the way."
+						/>
 					</ul>
 				</section>
 			</div>

@@ -73,7 +73,8 @@
 							on-chain, quite literally.
 						</p>
 					</div></a
-				><a
+				>
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/doge-coin-faces-key-resistance-will-bulls-establish-a-higher-low-before-the-next-leg-up"
 					><div class="relative h-64 w-full overflow-hidden">
@@ -100,7 +101,9 @@
 							continuation.
 						</p>
 					</div></a
-				><a
+				>
+
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/bitcoin-skeptical-vanguard-holds-20m-shares-in-strategy-amid-index-inflows"
 					><div class="relative h-64 w-full overflow-hidden">
@@ -124,7 +127,8 @@
 							thanks to Strategy and other stocks.
 						</p>
 					</div></a
-				><a
+				>
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/why-steampunk-rabbits-are-the-future-of-work"
 					><div class="relative h-64 w-full overflow-hidden">
@@ -148,7 +152,8 @@
 							their efficiency, multi-talented nature, and ability to bring charm to the workplace.
 						</p>
 					</div></a
-				><a
+				>
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/the-perks-of-going-headless-why-you-should-consider-a-headless-cms"
 					><div class="relative h-64 w-full overflow-hidden">
@@ -171,7 +176,8 @@
 							Discover why a headless CMS might be the right choice for your business.
 						</p>
 					</div></a
-				><a
+				>
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/testing-one-two-three"
 					><div class="relative h-64 w-full overflow-hidden">
@@ -219,7 +225,8 @@
 							learning more about.
 						</p>
 					</div></a
-				><a
+				>
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/essential-tips-for-keeping-your-bunny-looking-and-feeling-their-best"
 					><div class="relative h-64 w-full overflow-hidden">
@@ -243,7 +250,8 @@
 							spot cleaning, is vital for your bunny's health, appearance, and well-being.
 						</p>
 					</div></a
-				><a
+				>
+				<a
 					class="relative max-w-[350px] overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out hover:dark:border-[#484354]"
 					href="/blog/pirates-guide-to-productivity-web-developers-favorite-tools-on-macs"
 					><div class="relative h-64 w-full overflow-hidden">
