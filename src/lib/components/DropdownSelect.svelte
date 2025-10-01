@@ -91,7 +91,7 @@
 		<div
 			class="animate-in fade-in-0 zoom-in-95 absolute right-0 left-0 z-50 w-[290px] max-w-[290px] overflow-hidden rounded-md border border-[#ffffff1a] bg-[#0b0809] shadow-lg duration-200 {showAbove
 				? 'bottom-full mb-1'
-				: 'top-full mt-[-10px]'}"
+				: 'top-full mt-2 lg:mt-[-10px]'}"
 		>
 			{#each options as option}
 				<button
