@@ -3,6 +3,7 @@
 	import SectionHeaderWithSubtitle from '$lib/components/SectionHeaderWithSubtitle.svelte';
 	import PricingCard from '$lib/components/PricingCard.svelte';
 	import FAQItem from '$lib/components/FAQItem.svelte';
+	import ReviewCard from '$lib/components/ReviewCard.svelte';
 </script>
 
 <main class="flex flex-grow flex-col py-4 pt-20">
@@ -124,225 +125,51 @@
 					</p>
 					<div class="mt-10 text-left">
 						<ul class="flex flex-col gap-4">
-							<li>
-								<div
-									class="relative overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out"
-								>
-									<figure class="h-full rounded-2xl p-5">
-										<figcaption class="mb-5 flex items-center gap-x-4">
-											<img
-												alt="Fred Lackey"
-												loading="lazy"
-												width="40"
-												height="40"
-												decoding="async"
-												data-nimg="1"
-												class="h-10 w-10 rounded-full bg-gray-50"
-												srcset="/images/fred_lackey.webp"
-												src="/images/fred_lackey.webp"
-												style="color: transparent;"
-											/>
-											<div>
-												<div class="font-semibold text-white">Fred Lackey</div>
-												<img
-													alt="Stars"
-													data-testid="trust-stars"
-													fetchpriority="high"
-													width="90"
-													height="30"
-													decoding="async"
-													data-nimg="1"
-													class="inline"
-													src="/images/5.ea72dfc5.svg"
-													style="color: transparent;"
-												/>
-											</div>
-										</figcaption>
-										<blockquote>
-											<p>
-												Been recommending Mosh for years... probably a decade by now. I've lost
-												count of how many developers and business people I have shared one of his
-												videos with. Not much to say other than he's one of the best instructors out
-												there. Great personality for teaching and a solid mastery of the subject
-												matter. He's always going to be my first stop for learning something new.
-											</p>
-										</blockquote>
-									</figure>
-								</div>
-							</li>
-							<li>
-								<div
-									class="relative overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out"
-								>
-									<figure class="h-full rounded-2xl p-5">
-										<figcaption class="mb-5 flex items-center gap-x-4">
-											<div>
-												<div class="font-semibold text-white">David Roberts</div>
-												<img
-													alt="Stars"
-													data-testid="trust-stars"
-													fetchpriority="high"
-													width="90"
-													height="30"
-													decoding="async"
-													data-nimg="1"
-													class="inline"
-													src="/images/5.ea72dfc5.svg"
-													style="color: transparent;"
-												/>
-											</div>
-										</figcaption>
-										<blockquote>
-											<p>Mosh helped me land a job as as a Mobile software engineer</p>
-											<p>
-												I'm a self taught software engineer. During this period of study I completed
-												many courses, trying to emulate a computer science education. Mosh's courses
-												helped me all the way and the ones I continue coming back to and referencing
-												as a professional software engineer.
-											</p>
-											<p>
-												I already held a degree and didn't want to incure the cost of going to
-												college again. I'm also pretty motivated, so Mosh's structured courses
-												worked well for me.
-											</p>
-											<p>
-												May courses will teach you a framework or technology, but these are highly
-												perishable skills. Mosh will teach you to think like a software engineer and
-												load you with the correct fundamentals that will give you confidence when
-												you get in the workplace.
-											</p>
-											<p>Thanks for everything Mosh!</p>
-										</blockquote>
-									</figure>
-								</div>
-							</li>
-							<li>
-								<div
-									class="relative overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out"
-								>
-									<figure class="h-full rounded-2xl p-5">
-										<figcaption class="mb-5 flex items-center gap-x-4">
-											<div>
-												<div class="font-semibold text-white">Muhammad Usman Ghani</div>
-												<img
-													alt="Stars"
-													data-testid="trust-stars"
-													fetchpriority="high"
-													width="90"
-													height="30"
-													decoding="async"
-													data-nimg="1"
-													class="inline"
-													src="/images/5.ea72dfc5.svg"
-													style="color: transparent;"
-												/>
-											</div>
-										</figcaption>
-										<blockquote>
-											<p>
-												I started learning from Mosh years back when I didn't even know the ABCs of
-												programming. Now I'm a data engineer and still come to his courses every now
-												and then. I can't thank him enough for the incredible impact his courses and
-												exceptional teaching methods have had on my journey in programming.
-											</p>
-										</blockquote>
-									</figure>
-								</div>
-							</li>
-							<li>
-								<div
-									class="relative overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out"
-								>
-									<figure class="h-full rounded-2xl p-5">
-										<figcaption class="mb-5 flex items-center gap-x-4">
-											<img
-												alt="Virginia Castillo"
-												loading="lazy"
-												width="40"
-												height="40"
-												decoding="async"
-												data-nimg="1"
-												class="h-10 w-10 rounded-full bg-gray-50"
-												srcset="/images/virginia_castillo.png"
-												src="/images/virginia_castillo.png"
-												style="color: transparent;"
-											/>
-											<div>
-												<div class="font-semibold text-white">Virginia Castillo</div>
-												<img
-													alt="Stars"
-													data-testid="trust-stars"
-													fetchpriority="high"
-													width="90"
-													height="30"
-													decoding="async"
-													data-nimg="1"
-													class="inline"
-													src="/images/5.ea72dfc5.svg"
-													style="color: transparent;"
-												/>
-											</div>
-										</figcaption>
-										<blockquote>
-											<p>The best investment I have ever made</p>
-											<p>
-												Mosh is an outstanding teacher. His lessons are easy to learn and can be
-												followed at your own pace, making them incredibly convenient. I've been
-												learning from him for over four years, and the growth in my professional
-												career has been remarkable. It's totally worth it. I am incredibly thankful
-												to have found him.
-											</p>
-										</blockquote>
-									</figure>
-								</div>
-							</li>
-							<li>
-								<div
-									class="relative overflow-hidden rounded-lg border border-slate-800 transition-colors duration-200 ease-in-out"
-								>
-									<figure class="h-full rounded-2xl p-5">
-										<figcaption class="mb-5 flex items-center gap-x-4">
-											<img
-												alt="Tejasvi Kalburgi"
-												loading="lazy"
-												width="40"
-												height="40"
-												decoding="async"
-												data-nimg="1"
-												class="h-10 w-10 rounded-full bg-gray-50"
-												srcset="/images/tejasvi_kalburgi.png"
-												src="/images/tejasvi_kalburgi.png"
-												style="color: transparent;"
-											/>
-											<div>
-												<div class="font-semibold text-white">Tejasvi Kalburgi</div>
-												<img
-													alt="Stars"
-													data-testid="trust-stars"
-													fetchpriority="high"
-													width="90"
-													height="30"
-													decoding="async"
-													data-nimg="1"
-													class="inline"
-													src="/images/5.ea72dfc5.svg"
-													style="color: transparent;"
-												/>
-											</div>
-										</figcaption>
-										<blockquote>
-											<p>
-												Mosh comes up with the best, well-structured and informative courses as
-												always. I have seen most of his YouTube videos in his channel and he is the
-												main reason I fell in love with programming. Mosh not only teaches you the
-												concepts, but also points out what it takes to be a professional developer
-												that makes one stand out. I highly recommend his courses to all.
-											</p>
-											<p>Thank you so much, Mosh</p>
-										</blockquote>
-									</figure>
-								</div>
-							</li>
+							<!-- Reviews list -->
+							<ReviewCard
+								name="Fred Lackey"
+								avatar="/images/fred_lackey.webp"
+								rating={5}
+								review="Been recommending Mosh for years... probably a decade by now. I've lost count of how many developers and business people I have shared one of his videos with. Not much to say other than he's one of the best instructors out there. Great personality for teaching and a solid mastery of the subject matter. He's always going to be my first stop for learning something new."
+							/>
+
+							<ReviewCard
+								name="David Roberts"
+								rating={5}
+								review={[
+									'Mosh helped me land a job as as a Mobile software engineer',
+									"I'm a self taught software engineer. During this period of study I completed many courses, trying to emulate a computer science education. Mosh's courses helped me all the way and the ones I continue coming back to and referencing as a professional software engineer.",
+									"I already held a degree and didn't want to incure the cost of going to college again. I'm also pretty motivated, so Mosh's structured courses worked well for me.",
+									'May courses will teach you a framework or technology, but these are highly perishable skills. Mosh will teach you to think like a software engineer and load you with the correct fundamentals that will give you confidence when you get in the workplace.',
+									'Thanks for everything Mosh!'
+								]}
+							/>
+
+							<ReviewCard
+								name="Muhammad Usman Ghani"
+								rating={5}
+								review="I started learning from Mosh years back when I didn't even know the ABCs of programming. Now I'm a data engineer and still come to his courses every now and then. I can't thank him enough for the incredible impact his courses and exceptional teaching methods have had on my journey in programming."
+							/>
+
+							<ReviewCard
+								name="Virginia Castillo"
+								avatar="/images/virginia_castillo.png"
+								rating={5}
+								review={[
+									'The best investment I have ever made',
+									"Mosh is an outstanding teacher. His lessons are easy to learn and can be followed at your own pace, making them incredibly convenient. I've been learning from him for over four years, and the growth in my professional career has been remarkable. It's totally worth it. I am incredibly thankful to have found him."
+								]}
+							/>
+
+							<ReviewCard
+								name="Tejasvi Kalburgi"
+								avatar="/images/tejasvi_kalburgi.png"
+								rating={5}
+								review={[
+									'Mosh comes up with the best, well-structured and informative courses as always. I have seen most of his YouTube videos in his channel and he is the main reason I fell in love with programming. Mosh not only teaches you the concepts, but also points out what it takes to be a professional developer that makes one stand out. I highly recommend his courses to all.',
+									'Thank you so much, Mosh'
+								]}
+							/>
 						</ul>
 						<button
 							class="group bg-gray-450 mt-4 inline-block rounded-full px-3 py-1 text-center text-sm font-medium text-white no-underline transition-all duration-200 ease-out hover:bg-gray-500 hover:text-white hover:no-underline md:font-semibold"
