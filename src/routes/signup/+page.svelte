@@ -15,13 +15,7 @@
 							<img src={logoUrl} alt="Logo" class="hidden h-[32px] w-auto dark:block" />
 						</a>
 
-						<h1 class="my-3 text-3xl font-bold">Login to Firebits</h1>
-
-						<div class="text-center text-sm">
-							Don't have an account? <a href="/auth/signup" class="underline underline-offset-4"
-								>Sign up</a
-							>
-						</div>
+						<h1 class="my-3 text-3xl font-bold">Signup to Firebits</h1>
 					</div>
 
 					<div class="flex flex-col gap-6">
@@ -57,9 +51,25 @@
 							/>
 						</div>
 
+						<div class="grid gap-3">
+							<label
+								class="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+								id="bits-c2"
+								data-label-root=""
+								for="confirm-password-c1">Confirm Password</label
+							>
+							<input
+								class="placeholder:text-muted-foreground focus-visible:ring-ring focus:border-input ring-offset-background flex h-10 w-full rounded-md border border-[#ffffff1a] bg-[#0b0809] px-3 py-5 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:ring-0 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+								id="password-c1"
+								type="password"
+								placeholder="••••••••"
+								required=""
+							/>
+						</div>
+
 						<button
 							class="ring-offset-background focus-visible:ring-ring [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-violet-650 relative inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-violet-500 px-6 py-3 text-center font-medium whitespace-nowrap text-white transition-all duration-200 ease-out hover:text-white hover:no-underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 md:font-semibold"
-							type="submit">Login</button
+							type="submit">Signup</button
 						>
 					</div>
 
