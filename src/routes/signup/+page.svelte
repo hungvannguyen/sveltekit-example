@@ -1,5 +1,7 @@
 <script>
 	import logoUrl from '$lib/assets/logo.png';
+
+	let { form } = $props();
 </script>
 
 <div
@@ -7,7 +9,7 @@
 >
 	<div class="w-full max-w-sm">
 		<div class="flex flex-col gap-6">
-			<form>
+			<form method="POST" action="?/create">
 				<div class="flex flex-col gap-6">
 					<div class="flex flex-col items-center gap-2">
 						<a href="/">
@@ -16,6 +18,24 @@
 						</a>
 
 						<h1 class="my-3 text-3xl font-bold">Signup to Firebits</h1>
+
+						{#if form?.error}
+							<div
+								class="rounded-md border border-red-500/20 bg-red-500/10 p-3 text-center text-sm text-red-500"
+							>
+								{form.error}
+							</div>
+						{/if}
+
+						{#if form?.success}
+							<div
+								class="rounded-md border border-green-500/20 bg-green-500/10 p-3 text-center text-sm text-green-500"
+							>
+								{form.message}
+								<br />
+								<a href="/login" class="underline">Click here to login</a>
+							</div>
+						{/if}
 					</div>
 
 					<div class="flex flex-col gap-6">
@@ -31,6 +51,7 @@
 								id="email-c1"
 								type="email"
 								placeholder="m@example.com"
+								name="email"
 								required=""
 							/>
 						</div>
@@ -47,6 +68,7 @@
 								id="password-c1"
 								type="password"
 								placeholder="••••••••"
+								name="password"
 								required=""
 							/>
 						</div>
@@ -63,6 +85,7 @@
 								id="password-c1"
 								type="password"
 								placeholder="••••••••"
+								name="confirm-password"
 								required=""
 							/>
 						</div>

@@ -18,7 +18,7 @@
 						<h1 class="my-3 text-3xl font-bold">Login to Firebits</h1>
 
 						<div class="text-center text-sm">
-							Don't have an account? <a href="/auth/signup" class="underline underline-offset-4"
+							Don't have an account? <a href="/signup" class="underline underline-offset-4"
 								>Sign up</a
 							>
 						</div>
