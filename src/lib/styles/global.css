@@ -1,61 +1,170 @@
-@reference "tailwindcss";
+:root {
+    --color-primary: #8B5CF6;
+    --color-secondary: #EC4899;
+    --color-primary-rgb: 139, 92, 246;
+    --color-secondary-rgb: 236, 72, 153;
+}
 
 body {
-    @apply bg-[#0b0809] flex flex-col min-h-svh relative z-10;
+    background-color: #0b0809;
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    position: relative;
+    z-index: 10;
 }
 
 p,
 span {
-    @apply text-[#cfcfcf];
+    color: #cfcfcf;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    @apply text-white font-bold;
+    color: white;
+    font-weight: bold;
 }
 
 .container {
-    @apply w-full mx-auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (min-width: 40rem) {
     .container {
-        @apply max-w-[40rem]
+        max-width: 40rem;
     }
 }
 
 @media (min-width: 48rem) {
     .container {
-        @apply max-w-[48rem]
+        max-width: 48rem;
     }
 }
 
 @media (min-width: 64rem) {
     .container {
-        @apply max-w-[64rem]
+        max-width: 64rem;
     }
 }
 
 @media (min-width: 80rem) {
     .container {
-        @apply max-w-[80rem]
+        max-width: 80rem;
     }
 }
 
 @media (min-width: 96rem) {
     .container {
-        @apply max-w-[96rem]
+        max-width: 96rem;
     }
 }
 
 @media (min-width: 1100px) {
     .container {
-        @apply max-w-[1100px]
+        max-width: 1100px;
     }
 }
 
 .icon {
-    @apply fill-current stroke-current;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+/* Custom Primary/Secondary Classes */
+.text-primary {
+    color: var(--color-primary);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+.bg-primary\/10 {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+}
+
+.bg-primary\/20 {
+    background-color: rgba(var(--color-primary-rgb), 0.2);
+}
+
+.border-primary\/30 {
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+}
+
+.border-primary\/50 {
+    border-color: rgba(var(--color-primary-rgb), 0.5);
+}
+
+.from-primary {
+    --tw-gradient-from: var(--color-primary);
+}
+
+.to-secondary {
+    --tw-gradient-to: var(--color-secondary);
+}
+
+.from-primary\/90 {
+    --tw-gradient-from: rgba(var(--color-primary-rgb), 0.9);
+}
+
+.to-secondary\/90 {
+    --tw-gradient-to: rgba(var(--color-secondary-rgb), 0.9);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+.focus\:border-primary:focus {
+    border-color: var(--color-primary);
+}
+
+.hover\:from-primary\/90:hover {
+    --tw-gradient-from: rgba(var(--color-primary-rgb), 0.9);
+}
+
+.hover\:to-secondary\/90:hover {
+    --tw-gradient-to: rgba(var(--color-secondary-rgb), 0.9);
+}
+
+.hover\:border-primary:hover {
+    border-color: var(--color-primary);
+}
+
+.hover\:border-primary\/30:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.3);
+}
+
+.hover\:border-primary\/50:hover {
+    border-color: rgba(var(--color-primary-rgb), 0.5);
+}
+
+.hover\:shadow-primary\/20:hover {
+    box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Sidebar styles */
+.sidebar-tab {
+    transition: all 0.3s ease;
+}
+
+.sidebar-tab:hover {
+    transform: translateX(4px);
+}
+
+.sidebar-tab.active {
+    transform: translateX(8px);
+    box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.3);
 }

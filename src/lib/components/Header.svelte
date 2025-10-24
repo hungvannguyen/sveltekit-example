@@ -84,7 +84,7 @@
 
 		{#if user}
 			<a
-				href="/members"
+				href="/member"
 				class="block rounded-3xl bg-white px-3 py-1 no-underline outline-none hover:bg-gray-300 hover:no-underline"
 			>
 				<div class="text-base tracking-normal text-black transition-colors duration-300">
