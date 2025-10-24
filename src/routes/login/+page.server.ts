@@ -3,9 +3,10 @@ import { fail, redirect } from '@sveltejs/kit';
 import pool from '$lib/database.js';
 import bcrypt from 'bcrypt';
 import { logger } from '$lib/logger.js';
+import { randomBytes } from 'crypto';
 
 export const actions: Actions = {
-	login: async ({ request }) => {
+	login: async ({ request, cookies }) => {
 		const formData = await request.formData();
 
 		const email = formData.get('email');
@@ -37,6 +38,17 @@ export const actions: Actions = {
 				logger.warn('Login attempt with incorrect password');
 				return fail(400, { error: 'Invalid email or password.' });
 			}
+
+			const sessionId = randomBytes(32).toString('hex');
+
+			await pool.execute('UPDATE users SET session_id = ? WHERE id = ?', [sessionId, user.id]);
+
+			cookies.set('session_id', sessionId, {
+				path: '/',
+				httpOnly: true,
+				sameSite: 'strict',
+				maxAge: 60 * 60 * 24 * 7 // 1 week
+			});
 
 			logger.info('User logged in successfully');
 

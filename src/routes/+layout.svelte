@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import '../app.css';
 	import '../lib/styles/fonts.css';
 	import '../lib/styles/global.css';
@@ -8,11 +9,15 @@
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
+
+	const blockList = ['/login', '/signup'];
 </script>
 
 <SvgSprites />
 
-<Header />
+{#if !blockList.includes($page.url.pathname)}
+	<Header />
+{/if}
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
@@ -36,4 +41,6 @@
 	{@render children?.()}
 </main>
 
-<Footer />
+{#if !blockList.includes($page.url.pathname)}
+	<Footer />
+{/if}

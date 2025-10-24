@@ -8,12 +8,14 @@
 		mobileMenuOpen = !mobileMenuOpen;
 	}
 
-	function isActive(href: string) {
+	$: isActive = (href: string) => {
 		if (href === '/') {
 			return $page.url.pathname === '/';
 		}
 		return $page.url.pathname.startsWith(href);
-	}
+	};
+
+	$: user = $page.data?.user;
 </script>
 
 <header class="sticky top-0 z-50 w-full bg-black/80 text-[#7f7f7f] backdrop-blur-md">
@@ -80,14 +82,25 @@
 			</div>
 		</nav>
 
-		<a
-			href="/login"
-			class="block rounded-3xl bg-white px-3 py-1 no-underline outline-none hover:bg-gray-300 hover:no-underline"
-		>
-			<div class="text-base tracking-normal text-black transition-colors duration-300">
-				Members Area
-			</div>
-		</a>
+		{#if user}
+			<a
+				href="/members"
+				class="block rounded-3xl bg-white px-3 py-1 no-underline outline-none hover:bg-gray-300 hover:no-underline"
+			>
+				<div class="text-base tracking-normal text-black transition-colors duration-300">
+					Hello, {user.email}
+				</div>
+			</a>
+		{:else}
+			<a
+				href="/login"
+				class="block rounded-3xl bg-white px-3 py-1 no-underline outline-none hover:bg-gray-300 hover:no-underline"
+			>
+				<div class="text-base tracking-normal text-black transition-colors duration-300">
+					Members Area
+				</div>
+			</a>
+		{/if}
 
 		<!-- Mobile menu -->
 		<div class="flex md:hidden">
@@ -142,7 +155,6 @@
 					class="fixed top-0 left-0 z-50 min-w-max translate-y-[50px]"
 				>
 					<div
-						forcemount="false"
 						class="rounded-0 poiter-events-auto top-full z-50 h-screen w-screen max-w-full overflow-hidden bg-[#0b0809] p-3 shadow-md"
 						role="menu"
 						aria-orientation="vertical"
