@@ -197,9 +197,10 @@
 								<h2 class="text-2xl font-bold">Cập Nhật Thông Tin</h2>
 								<button
 									on:click={saveProfile}
-									class="from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 rounded-full bg-gradient-to-r px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
+									class="from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 flex items-center gap-2 rounded-full bg-gradient-to-r px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
 								>
-									💾 Lưu Thay Đổi
+									<span>💾</span>
+									<span>Lưu Thay Đổi</span>
 								</button>
 							</div>
 
@@ -774,7 +775,7 @@
 					</div>
 
 					<div class="space-y-8">
-						<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+						<div class="x:grid-cols-3 grid gap-6 md:grid-cols-2">
 							<!-- Purchase Item 1 -->
 							<div
 								class="hover:border-primary/50 hover:shadow-primary/20 overflow-hidden rounded-2xl border border-[#2a2a2a] bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
