@@ -13,6 +13,7 @@
 	export let data;
 	$: ({ member } = data);
 	$: ({ courses } = data);
+	$: ({ certificates } = data);
 
 	let activeTab = 'profile';
 	let sidebarOpen = false;
@@ -146,7 +147,7 @@
 
 			<!-- Certificates Tab -->
 			{#if activeTab === 'certificates'}
-				<CertificatesTab {member} />
+				<CertificatesTab {certificates} />
 			{/if}
 		</div>
 	</div>
