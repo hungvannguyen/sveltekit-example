@@ -116,7 +116,7 @@
 				<h2 class="text-2xl font-bold">Cập Nhật Thông Tin</h2>
 				<button
 					on:click={saveProfile}
-					class="from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 flex items-center gap-2 rounded-full bg-gradient-to-r px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
+					class="from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 flex cursor-pointer items-center gap-2 rounded-full bg-gradient-to-r px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
 				>
 					<span>💾</span>
 					<span>Lưu Thay Đổi</span>
